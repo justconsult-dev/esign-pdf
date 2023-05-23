@@ -332,11 +332,11 @@
         document.addEventListener('DOMContentLoaded', () => {
             const pdfFileInput = document.getElementById('pdf-file');
             pdfFileInput.addEventListener('change', async (event) => {
-                // const file = event.target.files[0];
-                // const pdfPreview = document.querySelector('.pdf-preview');
-                // pdfPreview.innerHTML = `<object data="${URL.createObjectURL(file)}" type="application/pdf" width="100%">
-                // <p>Unable to display PDF file. <a href="${URL.createObjectURL(file)}">Download</a> instead.</p>
-                // </object>`;
+                const file = event.target.files[0];
+                const pdfPreview = document.querySelector('.pdf-preview');
+                pdfPreview.innerHTML = `<object data="${URL.createObjectURL(file)}" type="application/pdf" width="100%">
+                <p>Unable to display PDF file. <a href="${URL.createObjectURL(file)}">Download</a> instead.</p>
+                </object>`;
             });
             const pdfForm = document.getElementById('pdf-form');
             pdfForm.addEventListener('submit', async (event) => {
