@@ -59,7 +59,7 @@
                         <label for="pdf-file">PDF File</label>
                         <input type="file" name="pdf-file" id="pdf-file" accept="application/pdf" required/>
 
-                        <button style="margin-top: 5px">Upload and Sign</button>
+                        <button class="upload-btn d-none" style="margin-top: 5px">Upload and Sign</button>
                     </form>
                     <div class="pdf-preview">
 
@@ -226,6 +226,7 @@
             tokensigning.checkTokenSigning().then(function (data) {
                 loading(false);
                 const obj = JSON.parse(data);
+                console.log(obj);
                 if (obj.code === 1) {
                     document.getElementById(
                         'divComponentStatusOK').style.visibility = 'visible';
@@ -337,7 +338,11 @@
                 pdfPreview.innerHTML = `<object data="${URL.createObjectURL(file)}" type="application/pdf" width="100%">
                 <p>Unable to display PDF file. <a href="${URL.createObjectURL(file)}">Download</a> instead.</p>
                 </object>`;
+
+                const submitBtn = document.querySelector('.upload-btn');
+                submitBtn.classList.remove('d-none');
             });
+
             const pdfForm = document.getElementById('pdf-form');
             pdfForm.addEventListener('submit', async (event) => {
                 event.preventDefault();
